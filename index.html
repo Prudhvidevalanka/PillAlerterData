@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pill Alerter Data</title>
+  <style>
+        
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  margin:5px 30px;
+
+}
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 10px 0;
+  background-color: #6c63ff;
+  color: white;
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+/* University Logo styling */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.university-logo {
+  max-width: 100%;
+  height: auto;
+  width: 200px;
+
+}
+
+/* Container styles */
+.pill-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Title styles */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Date Selector */
+.date-selector {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* Table styles */
+.pill-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pill-table th, .pill-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.pill-table th {
+  background-color: #6c63ff;
+  color: #fff;
+}
+
+/* Status colors */
+.status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.status.taken {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.status.missed {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.status.pending {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+/* Project Details styling */
+.project-details {
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  font-size: 14px;
+  color: #666;
+  background-color: #ffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.project-details h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.project-details p {
+  margin: 5px 0;
+}
+
+/* Submit Button Styling */
+.submit-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .pill-container {
+    padding: 15px;
+  }
+
+  .university-logo {
+    width: 150px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .project-details h3 {
+    font-size: 16px;
+  }
+
+  .pill-table, .pill-table thead, .pill-table tbody, .pill-table th, .pill-table td, .pill-table tr {
+    display: block;
+  }
+
+  .pill-table tr {
+    margin-bottom: 15px;
+  }
+
+  .pill-table th {
+    display: none;
+  }
+
+  .pill-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .pill-table td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+    width: 50%;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="marquee">
+    <span class="marquee-text">Welcome to the Pill Alerter Data Dashboard - Stay on track with your medication!</span>
+  </div>
+
+  <div class="logo-container">
+    <img src="logolp.jpg" alt="University Logo" class="university-logo">
+  </div>
+
+  <div class="pill-container">
+    <div class="title">Pill Alerter Data</div>
+    <table class="pill-table">
+      <thead>
+        <tr>
+          <th>Medication Name</th>
+          <th>Dosage</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Medication Name">Paracetamol</td>
+          <td data-label="Dosage">500mg</td>
+          <td data-label="Time"><input type="time" id="time1" class="time-input"></td>
+          <td data-label="Status"><span class="status" id="status1">Loading...</span></td>
+        </tr>
+        <tr>
+          <td data-label="Medication Name">Ibuprofen</td>
+          <td data-label="Dosage">200mg</td>
+          <td data-label="Time"><input type="time" id="time2" class="time-input"></td>
+          <td data-label="Status"><span class="status" id="status2">Loading...</span></td>
+        </tr>
+        <tr>
+          <td data-label="Medication Name">Vitamin C</td>
+          <td data-label="Dosage">500mg</td>
+          <td data-label="Time"><input type="time" id="time3" class="time-input"></td>
+          <td data-label="Status"><span class="status" id="status3">Loading...</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="submit-button" onclick="submitChanges()">Submit</button>
+  </div>
+
+  <div class="project-details">
+    <h3>Project Done By:</h3>
+    <p>1. D Prudhvi - Registration No: 12112101</p>
+    <p>2. D Manojnadiu - Registration No: 12112025</p>
+    <p>3. J ManojKumar - Registration No: 12113271</p>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script>
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAE2ME007wztQsUkZfPgquOEAdLJzEtJ9E",
+    authDomain: "pill-bc610.firebaseapp.com",
+    databaseURL: "https://pill-bc610-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "pill-bc610",
+    storageBucket: "pill-bc610.appspot.com",
+    messagingSenderId: "594311082415",
+    appId: "1:594311082415:web:4b83b1e5d5ef3fcb1d7f5a"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+
+  // Function to submit changes
+  function submitChanges() {
+    const timeInputs = document.querySelectorAll('.time-input');
+    timeInputs.forEach((input, index) => {
+      const newTime = String(input.value);
+      if (index === 0) {
+        database.ref('time/time1').set(newTime);
+        database.ref('time/status1').set("Pending");  // Set status to "Pending"
+      }
+      else if (index === 1) {
+        database.ref('time/time2').set(newTime);
+        database.ref('time/status2').set("Pending");  // Set status to "Pending"
+      }
+      else if (index === 2) {
+        database.ref('time/time3').set(newTime);
+        database.ref('time/status3').set("Pending");  // Set status to "Pending"
+      }
+    });
+    alert("Changes submitted successfully!");
+  }
+
+  // Function to load times and statuses from Firebase
+  function loadData() {
+    // Load and set times
+    database.ref('time/time1').on('value', snapshot => {
+      document.getElementById('time1').value = snapshot.val() || "08:00";
+    });
+    database.ref('time/time2').on('value', snapshot => {
+      document.getElementById('time2').value = snapshot.val() || "12:00";
+    });
+    database.ref('time/time3').on('value', snapshot => {
+      document.getElementById('time3').value = snapshot.val() || "18:00";
+    });
+
+    // Load and set statuses
+    database.ref('time/status1').on('value', snapshot => {
+      document.getElementById('status1').innerText = snapshot.val() || "Loading...";
+    });
+    database.ref('time/status2').on('value', snapshot => {
+      document.getElementById('status2').innerText = snapshot.val() || "Loading...";
+    });
+    database.ref('time/status3').on('value', snapshot => {
+      document.getElementById('status3').innerText = snapshot.val() || "Loading...";
+    });
+  }
+
+  // Load data on page load
+  window.onload = loadData;
+</script>
+
+</body>
+</html>
